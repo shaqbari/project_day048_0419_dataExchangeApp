@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<members>
+	<member>
+		<name>이긍열</name>
+		<age>28</age>
+		<phone>121-1212-1212</phone>
+		<gender>남</gender>
+	</member>
+	<member>
+		<name>김연실</name>
+		<age>26</age>
+		<phone>010-1111-1111</phone>
+		<gender>여</gender>
+	</member>
+	<member>
+		<name>황재문</name>
+		<age>28</age>
+		<phone>010-222-2222</phone>
+		<gender>남</gender>
+	</member>
+</members>

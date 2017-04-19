@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cars>
+	<car>
+		<brand>BMW</brand>
+		<name>BMW701</name>
+		<price>7000</price>
+		<color>black</color>
+	</car>
+	<car>
+		<brand>벤츠</brand>
+		<name>벤츠2400</name>
+		<price>9000</price>
+		<color>white</color>
+	</car>
+	<car>
+		<brand>포르쉐</brand>
+		<name>카이엔</name>
+		<price>12000</price>
+		<color>red</color>
+	</car>
+</cars>

@@ -6,14 +6,15 @@ import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
 public class MyModel extends AbstractTableModel{
-	Vector<String> colName=new Vector<String>();
-	Vector<Vector> data=new Vector<Vector>();
+	Vector<String> colName;
+	Vector<Vector> data;
 	
-	public MyModel(AppMain main) {
-		
+	//xml파싱한 결과를 아래의 인수로 넘겨받자
+	public MyModel(Vector colName, Vector<Vector> data) {
+		this.colName=colName;
+		this.data=data;
 		
 	}
-	
 	
 	public String getColumnName(int column) {
 		return colName.get(column);

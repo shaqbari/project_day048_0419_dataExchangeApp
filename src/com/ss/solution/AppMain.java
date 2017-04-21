@@ -264,12 +264,10 @@ public class AppMain extends JFrame implements ActionListener{
 			pstmt=con.prepareStatement(sql.toString(),ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs=pstmt.executeQuery();
 			
-			rs.last();
-			int last=rs.getRow();
-			rs.beforeFirst();
-			
-			int count=1;
-			
+			rs.last();//커서를 제일 마지막 레코드로 보낸다.			
+			int total=rs.getRow();//row번호를 알아낸다.
+			rs.beforeFirst();//첫row이전으로 보낸다.
+						
 			sql.delete(0, sql.length());
 			sql.append("{\n");
 			sql.append("\"cars\":[\n");
@@ -280,22 +278,38 @@ public class AppMain extends JFrame implements ActionListener{
 				}*/
 				sql.append("\"brand\":\""+rs.getString("brand")+"\",\n");
 				sql.append("\"name\":\""+rs.getString("name")+"\",\n");
-				sql.append("\"price\":\""+rs.getString("price")+"\",\n");
-				sql.append("\"color\":\""+rs.getString("color")+"\"\n");
-				if (count!=last) {
+				sql.append("\"price\":"+rs.getString("price")+",\n");
+				sql.append("\"color\":\""+rs.getString("color")+"\"\n");//쉼표가 없어야 한다.
+				if (total-2>=0) { //배열n개중에서 index n-2번까지만 쉼표가 나와야 한다.
 					sql.append("},\n");
-					count++;
 				}else{
 					sql.append("}\n");
 				}
+				total--;
 			}
 			sql.append("]\n");
 			sql.append("}");
 			
 			area.setText(sql.toString());
 			
+			//jsonparser의 put~메소드를 이용해서도 export해보자
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if (rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		
